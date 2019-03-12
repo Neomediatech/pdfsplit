@@ -22,7 +22,7 @@ services:
         mode: host
     volumes:
       - data:/data
-      - /srv/data/pdfsplit/assets/pdfsplit:/usr/local/sbin/pdfsplit
+      - /srv/data/pdfsplit/assets/pdfsplit:/usr/local/sbin/pdfsplit:ro
     environment:
       TZ: Europe/Rome
   
