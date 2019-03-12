@@ -1,0 +1,30 @@
+# use to create a swarm template in Portainer
+version: '3.7'
+
+x-default-opts: 
+  &default-opts
+  deploy:
+    restart_policy:
+      condition: on-failure
+      delay: 5s
+      #max_attempts: 3
+      window: 20s
+  
+services:
+  app:
+    image: neomediatech/pdfsplit-ubuntu:latest
+    hostname: app
+    <<: *default-opts    
+    ports:
+      - target: 22
+        published: 2223
+        protocol: tcp
+        mode: host
+    volumes:
+      - data:/data
+    environment:
+      TZ: Europe/Rome
+  
+volumes:
+  data:
+    driver: local
