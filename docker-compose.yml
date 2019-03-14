@@ -22,6 +22,7 @@ services:
     volumes:
       - data:/data
       - /srv/data/pdfsplit/assets/pdfsplit:/usr/local/sbin/pdfsplit:ro
+      - /srv/data/pdfsplit/assets/:/data/:ro
     environment:
       TZ: Europe/Rome
   
