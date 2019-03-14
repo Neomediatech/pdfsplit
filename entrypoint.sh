@@ -31,7 +31,7 @@ if [ -f /data/assets/pdftops-user.txt ]; then
   pdftopsuser="$(cat /data/assets/pdftops-user.txt|awk -F":" '{print $1}')"
   id -u $pdftopsuser 1>/dev/null 2>/dev/null
   if [ $? -ne 0 ]; then
-    useradd -m -u 1003 -U $pdftopsuser
+    useradd -m -u 1003 -U -s /bin/bash $pdftopsuser
     cat /data/assets/pdftops-user.txt | chpasswd
   fi
 fi
