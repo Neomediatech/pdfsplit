@@ -27,19 +27,19 @@ if [ $? -ne 0 ]; then
   echo "$USER ALL = NOPASSWD:NOEXEC: /bin/mount, /bin/umount, /sbin/mount.cifs" > /etc/sudoers
 fi
 
-if [ -f /pdftops-user.txt ]; then
-  pdftopsuser="$(cat /pdftops-user.txt|awk -F":" '{print $1}')"
+if [ -f /data/assets/pdftops-user.txt ]; then
+  pdftopsuser="$(cat /data/assets/pdftops-user.txt|awk -F":" '{print $1}')"
   id -u $pdftopsuser 1>/dev/null 2>/dev/null
   if [ $? -ne 0 ]; then
     useradd -m -u 1003 -U $USER
-    cat /pdftops-user.txt | chpasswd
+    cat /data/assets/pdftops-user.txt | chpasswd
   fi
 fi
 
-LOGFILE="/data/pdfsplit.log"
+LOGFILE="/data/log/pdfsplit.log"
 
-if [ ! -d /data ]; then
-  mkdir -p /data
+if [ ! -d /data/log ]; then
+  mkdir -p /data/log
 fi
 
 if [ ! -f $LOGFILE ]; then
