@@ -1,9 +1,13 @@
-FROM ubuntu:18.04
+FROM neomediatech/ubuntu-base:latest
 
-LABEL maintainer="docker-dario@neomediatech.it"
+ENV VERSION=18.04 \
+    SERVICE=pdfsplit
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Europe/Rome
+LABEL maintainer="docker-dario@neomediatech.it" \ 
+      org.label-schema.version=$VERSION \
+      org.label-schema.vcs-type=Git \
+      org.label-schema.vcs-url=https://github.com/Neomediatech/${SERVICE} \
+      org.label-schema.maintainer=Neomediatech
 
 RUN apt-get update && apt-get install -y openssh-server poppler-utils qpdf ghostscript sudo cifs-utils && \ 
     rm -rf /var/lib/apt/lists/* && \
