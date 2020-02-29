@@ -11,7 +11,7 @@ x-default-opts:
   
 services:
   app:
-    image: neomediatech/pdfsplit-ubuntu:latest
+    image: neomediatech/pdfsplit:latest
     hostname: app
     <<: *default-opts    
     ports:
@@ -23,8 +23,6 @@ services:
       - data:/data
       - /srv/data/pdfsplit/assets/pdfsplit:/usr/local/sbin/pdfsplit:ro
       - /srv/data/pdfsplit/assets/:/data/assets/:ro
-    environment:
-      TZ: Europe/Rome
   
 volumes:
   data:
