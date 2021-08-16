@@ -1,6 +1,6 @@
-FROM neomediatech/ubuntu-base:latest
+FROM neomediatech/ubuntu-base:20.04
 
-ENV VERSION=18.04 \
+ENV VERSION=20.04 \
     SERVICE=pdfsplit
 
 LABEL maintainer="docker-dario@neomediatech.it" \ 
