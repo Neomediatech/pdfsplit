@@ -4,6 +4,9 @@ PW="$(echo {A..Z} {a..z} {0..9} {0..9} '@ # % ^ ( ) _ + = - [ ] { } . ?' | tr ' 
 
 USER=${USER:-"pdfsplit"}
 PASSWORD=${PASSWORD:-"$PW"}
+if [ -f /data/assets/pwd.txt ]; then
+  PASSWORD="$(cat /data/assets/pwd.txt|head -n 1)"
+fi
 
         echo " "
         echo " "
